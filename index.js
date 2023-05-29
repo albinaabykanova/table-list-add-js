@@ -1,32 +1,51 @@
-function addNewRow() {
-  var table = document.getElementById("employee-table");
-  var rowCount = table.rows.length;
-  var cellCount = table.rows[0].cells.length;
-  var row = table.insertRow(rowCount);
-  for (var i = 0; i < cellCount; i++) {
-    var cell = row.insertCell(i);
-    if (i < cellCount - 1) {
-      cell.innerHTML = '<input type="text" class="form-control" />';
-    } else {
-      cell.innerHTML =
-        '<input class="btn btn-danger" ' +
-        ' type="button" value="delete" onclick="deleteRow(this)" />';
-    }
+const form = document.getElementById("form");
+const ul = document.getElementById("ul");
+const button = document.getElementById("button");
+const input = document.getElementById("input");
+let itemsArray = localStorage.getItem("items")
+  ? JSON.parse(localStorage.getItem("items"))
+  : [];
+
+localStorage.setItem("items", JSON.stringify(itemsArray));
+const data = JSON.parse(localStorage.getItem("items"));
+
+const liMaker = (text) => {
+  const li = document.createElement("li");
+  li.textContent = text;
+  ul.appendChild(li);
+};
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  itemsArray.push(input.value);
+  localStorage.setItem("items", JSON.stringify(itemsArray));
+  liMaker(input.value);
+  input.value = "";
+});
+
+data.forEach((item) => {
+  liMaker(item);
+});
+
+button.addEventListener("click", function () {
+  localStorage.clear();
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
   }
-}
-/* This method will delete a row */
-function deleteRow(ele) {
-  var table = document.getElementById("employee-table");
-  var rowCount = table.rows.length;
-  if (rowCount <= 1) {
-    alert("There is no row available to delete!");
-    return;
-  }
-  if (ele) {
-    //delete specific row
-    ele.parentNode.parentNode.remove();
-  } else {
-    //delete last row
-    table.deleteRow(rowCount - 1);
-  }
+  itemsArray = [];
+});
+
+// Path: index.html
+var myList = document.getElementsByTagName("myList");
+
+var listItem = document.createElement("li");
+listItem.textContent = "new";
+
+myList.appendChild(listItem);
+
+for (var i = 0; i < itemsArray.lenght; i++) {
+  var listItem = document.createElement("li");
+  listItem.textContent = itemsArray[i];
+  myList.appendChild(listItem);
 }
