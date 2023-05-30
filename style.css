@@ -10,7 +10,7 @@ body {
   height: 100%;
   padding: 20px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-top: 100px;
   color: #ffffff;
   text-shadow: #e502e9 10px 4px 30px;
   font-weight: bold;
@@ -46,14 +46,14 @@ button {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: bold;
   font-size: 30px;
-  margin-top: 40px;
+  margin-top: 90px;
   cursor: pointer;
 }
 
 .form-control {
   width: 400px;
-  height: 100px;
-  margin-top: 20px;
+  height: 90px;
+  margin-top: 80px !important;
   border-radius: 5px;
   border: none;
   outline: none;

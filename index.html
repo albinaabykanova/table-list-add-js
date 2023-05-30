@@ -17,20 +17,19 @@
     <div id="container" class="containeer">
       <div class="content">
         <h1>Table List Add and Delete using Javascript</h1>
-       <button  class="button">Add New...</button> 
-        <button  class="button">Delete..</button> 
+        <form class="form" id="form">
+          <input id="item"  type="text"  placeholder="new text...."  class="form-control"/>
+          <button type="submit"  id="button" class="button">Add New...</button> 
+          <button id="delete" class="button">Delete..</button> 
+      </form>
       </div>
 
       <br />
-    <div class="form" id="form">
-        <input id="item"  type="text"  placeholder="new text...."  class="form-control"/>
-        <input type="submit" value="Add" />
-         <h2>Items</h2>
-         <ul></ul>
-    </div>
+   
+
 
     <ul id="myList">
-      add
+      
     </ul>
 
     <script src="index.js"></script>

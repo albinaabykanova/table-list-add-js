@@ -1,7 +1,8 @@
 const form = document.getElementById("form");
-const ul = document.getElementById("ul");
+const ul = document.getElementById("myList");
 const button = document.getElementById("button");
-const input = document.getElementById("input");
+const deleteButton = document.getElementById("delete");
+const input = document.getElementById("item");
 let itemsArray = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
   : [];
@@ -17,6 +18,7 @@ const liMaker = (text) => {
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
+  console.log(input.value);
 
   itemsArray.push(input.value);
   localStorage.setItem("items", JSON.stringify(itemsArray));
@@ -28,24 +30,10 @@ data.forEach((item) => {
   liMaker(item);
 });
 
-button.addEventListener("click", function () {
+deleteButton.addEventListener("click", function () {
   localStorage.clear();
   while (ul.firstChild) {
     ul.removeChild(ul.firstChild);
   }
   itemsArray = [];
 });
-
-// Path: index.html
-var myList = document.getElementsByTagName("myList");
-
-var listItem = document.createElement("li");
-listItem.textContent = "new";
-
-myList.appendChild(listItem);
-
-for (var i = 0; i < itemsArray.lenght; i++) {
-  var listItem = document.createElement("li");
-  listItem.textContent = itemsArray[i];
-  myList.appendChild(listItem);
-}
